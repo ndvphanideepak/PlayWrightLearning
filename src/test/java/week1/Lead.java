@@ -12,20 +12,18 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-
 public class Lead {
 	@Test
-	public void createLead()
-	{
-		Playwright playWright= Playwright.create();
-		Browser launch = playWright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+	public void createLead() {
+		Playwright playWright = Playwright.create();
+		Browser launch = playWright.chromium()
+				.launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
 		Page newPage = launch.newPage();
 		newPage.navigate("http://leaftaps.com/opentaps");
-		
-		  Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		  int width = (int)screenSize.getWidth(); 
-		  int height =(int)screenSize.getHeight();
-		 
+		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int) screenSize.getWidth();
+		int height = (int) screenSize.getHeight();
+
 		/*
 		 * GraphicsDevice defaultScreenDevice =
 		 * GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -33,8 +31,7 @@ public class Lead {
 		 * defaultScreenDevice.getDisplayMode().getHeight();
 		 */
 		newPage.setViewportSize(width, height);
-		
-		
+
 		Locator locator = newPage.locator("//input[@id='username']");
 		locator.type("demosalesmanager");
 		newPage.locator("//input[@id='password']").type("crmsfa");
@@ -44,12 +41,12 @@ public class Lead {
 		newPage.goForward();
 		System.out.println(newPage.url());
 		newPage.reload();
-		
+
 		newPage.click("text=Leads");
 		newPage.click("text=Create Lead");
 		newPage.type("//input[@id='createLeadForm_companyName']", "Demo");
-		//String textContent = newPage.locator("//*[@id='ext-gen638']").textContent();
-		//System.out.println(textContent);
+		// String textContent = newPage.locator("//*[@id='ext-gen638']").textContent();
+		// System.out.println(textContent);
 		newPage.type("#createLeadForm_firstName", "Demo First");
 		newPage.type("#createLeadForm_lastName", "Demo Surname ");
 		newPage.click(".smallSubmit");
@@ -59,7 +56,7 @@ public class Lead {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		newPage.close();
 		launch.close();
 		playWright.close();

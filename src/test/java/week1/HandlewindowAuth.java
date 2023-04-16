@@ -12,11 +12,11 @@ import com.microsoft.playwright.Page;
 
 public class HandlewindowAuth {
 	@Test
-	public void windowAuth() throws InterruptedException
-	{
+	public void windowAuth() throws InterruptedException {
 		Playwright pw = Playwright.create();
 		Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
-		BrowserContext newContext = browser.newContext(new Browser.NewContextOptions().setHttpCredentials("admin","admin"));
+		BrowserContext newContext = browser
+				.newContext(new Browser.NewContextOptions().setHttpCredentials("admin", "admin"));
 		Page newPage = newContext.newPage();
 		newPage.navigate("https://the-internet.herokuapp.com/");
 		newPage.click("//a[normalize-space()='Basic Auth']");
@@ -24,8 +24,7 @@ public class HandlewindowAuth {
 		newPage.close();
 		browser.close();
 		pw.close();
-		
-		
+
 	}
 
 }
