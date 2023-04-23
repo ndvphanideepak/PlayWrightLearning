@@ -13,7 +13,7 @@ import com.microsoft.playwright.Playwright;
 public class FileUpload {
 
 		@Test
-		public void fileUpload() throws InterruptedException
+		public void fileUpload1() throws InterruptedException
 		{
 			Playwright create = Playwright.create();
 			Browser launch = create.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
